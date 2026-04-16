@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Photos\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -15,7 +16,8 @@ class PhotosForm
                     ->required(),
                 TextInput::make('description')
                     ->default(null),
-                TextInput::make('src')
+                FileUpload::make('src')
+                    ->directory('photos')
                     ->required(),
                 TextInput::make('status')
                     ->required()

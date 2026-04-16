@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['name', 'description', 'category_id', 'src', 'status', 'album_id', 'partner_id', 'price'])]
+#[Fillable(['name', 'description', 'like_count', 'view_count', 'category_id', 'src', 'status', 'album_id', 'partner_id', 'price'])]
 class Photos extends Model
 {
     const STATUS_PUBLIC = 1;

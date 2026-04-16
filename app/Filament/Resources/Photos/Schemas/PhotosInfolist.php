@@ -20,6 +20,10 @@ class PhotosInfolist
                     ->numeric(),
                 TextEntry::make('album_id')
                     ->numeric(),
+                TextEntry::make('like_count')
+                    ->numeric(),
+                TextEntry::make('view_count')
+                    ->numeric(),
                 TextEntry::make('partner_id')
                     ->numeric(),
                 TextEntry::make('price')
@@ -27,7 +31,7 @@ class PhotosInfolist
                     ->placeholder('-'),
                 TextEntry::make('deleted_at')
                     ->dateTime()
-                    ->visible(fn (Photos $record): bool => $record->trashed()),
+                    ->visible(fn(Photos $record): bool => $record->trashed()),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

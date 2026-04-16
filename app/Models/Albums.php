@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[Fillable(['name', 'description', 'thumbnail', 'status', 'wallpaper_count', 'partner_id'])]
+#[Fillable(['name', 'description', 'like_count', 'view_count', 'thumbnail', 'status', 'wallpaper_count', 'partner_id'])]
 class Albums extends Model
 {
     use SoftDeletes;

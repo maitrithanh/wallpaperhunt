@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->integer('like_count')->default(0);
+            $table->integer('view_count')->default(0);
             $table->string('thumbnail')->nullable(); // Hình đại diện của album mặc định là hình của wallpaper đầu tiên trong album
             $table->tinyInteger('status')->default(1); // 1: active, 0: inactive, -1: deleted, 2: blocked
             $table->unsignedBigInteger('wallpaper_count')->default(0); // Số lượng wallpaper trong album

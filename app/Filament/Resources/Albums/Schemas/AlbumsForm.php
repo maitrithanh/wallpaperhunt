@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\Albums\Schemas;
 
+use App\Models\Albums;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -15,12 +18,12 @@ class AlbumsForm
                     ->required(),
                 TextInput::make('description')
                     ->default(null),
-                TextInput::make('thumbnail')
-                    ->default(null),
-                TextInput::make('status')
+                FileUpload::make('thumbnail')
+                    ->directory('AlbumsThumbnails'),
+                Select::make('status')
+                    ->options(Albums::getStatusOptions())
                     ->required()
-                    ->numeric()
-                    ->default(1),
+                    ->default(Albums::STATUS_PENDING),
                 TextInput::make('wallpaper_count')
                     ->required()
                     ->numeric()

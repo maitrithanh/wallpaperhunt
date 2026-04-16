@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->integer('like_count')->default(0);
+            $table->integer('view_count')->default(0);
             $table->string('category_id')->nullable();
             $table->string('src'); // Đường dẫn đến file ảnh
             $table->tinyInteger('status')->default(1); // 1: active, 0: inactive, -1: deleted, 2: blocked

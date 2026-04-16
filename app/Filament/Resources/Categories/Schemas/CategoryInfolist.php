@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Categories\Schemas;
 
 use App\Models\Category;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -13,8 +14,7 @@ class CategoryInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
-                TextEntry::make('avatar')
-                    ->placeholder('-'),
+                ImageEntry::make('avatar'),
                 TextEntry::make('slug'),
                 TextEntry::make('description')
                     ->placeholder('-'),
@@ -22,7 +22,7 @@ class CategoryInfolist
                     ->numeric(),
                 TextEntry::make('deleted_at')
                     ->dateTime()
-                    ->visible(fn (Category $record): bool => $record->trashed()),
+                    ->visible(fn(Category $record): bool => $record->trashed()),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

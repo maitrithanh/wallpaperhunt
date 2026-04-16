@@ -32,6 +32,14 @@ class PhotosTable
                     ->label('Bộ sưu tập')
                     ->numeric()
                     ->sortable(),
+                TextColumn::make('like_count')
+                    ->label('Số lượt thích')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('view_count')
+                    ->label('Số lượt xem')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('partner_id')
                     ->label('Người yêu cầu')
                     ->numeric()

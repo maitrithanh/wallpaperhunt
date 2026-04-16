@@ -14,5 +14,15 @@ class Category extends Model
     const STATUS_INACTIVE = 0;
     const STATUS_DRAFT = 2;
     const STATUS_PENDING = 3;
+
+    public static function getStatusOptions(): array
+    {
+        return [
+            self::STATUS_ACTIVE => 'Hoạt động',
+            self::STATUS_INACTIVE => 'Không hoạt động',
+            self::STATUS_DRAFT => 'Nháp',
+            self::STATUS_PENDING => 'Chờ duyệt',
+        ];
+    }
     //
 }

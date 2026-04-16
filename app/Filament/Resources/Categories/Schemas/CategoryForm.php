@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\Categories\Schemas;
 
+use App\Models\Category;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -13,16 +16,17 @@ class CategoryForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('avatar')
+                FileUpload::make('avatar')
+                    ->directory('categories')
                     ->default(null),
                 TextInput::make('slug')
                     ->required(),
                 TextInput::make('description')
                     ->default(null),
-                TextInput::make('status')
+                Select::make('status')
+                    ->options(Category::getStatusOptions())
                     ->required()
-                    ->numeric()
-                    ->default(0),
+                    ->default(Category::STATUS_PENDING),
             ]);
     }
 }
