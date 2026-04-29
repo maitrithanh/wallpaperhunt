@@ -10,6 +10,11 @@ class ListPhotos extends ListRecords
 {
     protected static string $resource = PhotosResource::class;
 
+    public function getMaxContentWidth(): ?string
+    {
+        return 'full';
+    }
+
     protected function getHeaderActions(): array
     {
         return [

@@ -19,6 +19,7 @@ class AlbumsForm
                 TextInput::make('description')
                     ->default(null),
                 FileUpload::make('thumbnail')
+                    ->disk('public')
                     ->directory('AlbumsThumbnails'),
                 Select::make('status')
                     ->options(Albums::getStatusOptions())

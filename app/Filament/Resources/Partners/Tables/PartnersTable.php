@@ -24,9 +24,10 @@ class PartnersTable
                 TextColumn::make('phone_number')
                     ->label('Số điện thoại')
                     ->searchable(),
-                TextColumn::make('avatar')
+                \Filament\Tables\Columns\ImageColumn::make('avatar')
                     ->label('Ảnh đại diện')
-                    ->searchable(),
+                    ->disk('public')
+                    ->circular(),
                 TextColumn::make('email')
                     ->label('Email')
                     ->label('Email address')

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['name', 'description', 'like_count', 'view_count', 'thumbnail', 'status', 'wallpaper_count', 'partner_id'])]
@@ -25,5 +27,13 @@ class Albums extends Model
         ];
     }
 
-    //
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(Photos::class, 'album_id');
+    }
 }

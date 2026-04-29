@@ -23,7 +23,8 @@ class CategoriesTable
                     ->label('Tên danh mục')
                     ->searchable(),
                 ImageColumn::make('avatar')
-                    ->label('Ảnh đại diện'),
+                    ->label('Ảnh đại diện')
+                    ->disk('public'),
                 TextColumn::make('slug')
                     ->label('Slug')
                     ->searchable(),
@@ -32,7 +33,15 @@ class CategoriesTable
                     ->searchable(),
                 TextColumn::make('status')
                     ->label('Trạng thái')
-                    ->numeric()
+                    ->badge()
+                    ->formatStateUsing(fn ($state) => \App\Models\Category::getStatusOptions()[$state] ?? $state)
+                    ->color(fn ($state) => match ((int) $state) {
+                        \App\Models\Category::STATUS_ACTIVE => 'success',
+                        \App\Models\Category::STATUS_PENDING => 'warning',
+                        \App\Models\Category::STATUS_INACTIVE => 'danger',
+                        \App\Models\Category::STATUS_DRAFT => 'gray',
+                        default => 'gray',
+                    })
                     ->sortable(),
                 TextColumn::make('deleted_at')
                     ->label('Ngày xóa')
@@ -52,7 +61,19 @@ class CategoriesTable
             ->filters([
                 TrashedFilter::make(),
             ])
-            ->recordActions([
+            ->actions([
+                \Filament\Actions\Action::make('approve')
+                    ->label('Duyệt')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->action(fn (\App\Models\Category $record) => $record->update(['status' => \App\Models\Category::STATUS_ACTIVE]))
+                    ->visible(fn (\App\Models\Category $record) => $record->status !== \App\Models\Category::STATUS_ACTIVE),
+                \Filament\Actions\Action::make('reject')
+                    ->label('Từ chối')
+                    ->icon('heroicon-o-x-circle')
+                    ->color('danger')
+                    ->action(fn (\App\Models\Category $record) => $record->update(['status' => \App\Models\Category::STATUS_INACTIVE]))
+                    ->visible(fn (\App\Models\Category $record) => $record->status !== \App\Models\Category::STATUS_INACTIVE),
                 ViewAction::make(),
                 EditAction::make(),
             ])

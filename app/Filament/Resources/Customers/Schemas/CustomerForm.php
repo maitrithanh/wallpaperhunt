@@ -21,6 +21,7 @@ class CustomerForm
                     ->tel()
                     ->default(null),
                 FileUpload::make('avatar')
+                    ->disk('public')
                     ->directory('avatars'),
                 TextInput::make('email')
                     ->label('Email address')

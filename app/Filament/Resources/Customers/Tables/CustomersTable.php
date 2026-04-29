@@ -19,6 +19,7 @@ class CustomersTable
             ->columns([
                 ImageColumn::make('avatar')
                     ->label('Ảnh đại diện')
+                    ->disk('public')
                     ->circular(),
                 TextColumn::make('full_name')
                     ->label('Họ và tên')

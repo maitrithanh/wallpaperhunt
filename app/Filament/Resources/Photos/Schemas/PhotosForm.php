@@ -17,12 +17,21 @@ class PhotosForm
                 TextInput::make('description')
                     ->default(null),
                 FileUpload::make('src')
+                    ->disk('public')
                     ->directory('photos')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(43008) // 42MB
+                    ->formatStateUsing(function ($state) {
+                        if (!$state || str_starts_with($state, 'http') || !\Illuminate\Support\Facades\Storage::disk('public')->exists($state)) {
+                            return null;
+                        }
+                        return $state;
+                    })
                     ->required(),
-                TextInput::make('status')
+                \Filament\Forms\Components\Select::make('status')
+                    ->options(\App\Models\Photos::getStatusOptions())
                     ->required()
-                    ->numeric()
-                    ->default(1),
+                    ->default(\App\Models\Photos::STATUS_PENDING),
                 TextInput::make('album_id')
                     ->required()
                     ->numeric(),

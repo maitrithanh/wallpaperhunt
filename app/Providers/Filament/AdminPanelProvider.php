@@ -28,9 +28,15 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('WallpaperHunt Admin')
+            ->darkMode(false)
+            ->databaseNotifications()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
+                'gray' => Color::Slate,
             ])
+            ->font('Outfit')
+            ->sidebarCollapsibleOnDesktop()
             // ->navigationGroups([
             //     'Quản lý nội dung',
             // ])

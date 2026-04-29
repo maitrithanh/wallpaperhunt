@@ -17,7 +17,16 @@ class CategoryForm
                 TextInput::make('name')
                     ->required(),
                 FileUpload::make('avatar')
+                    ->disk('public')
                     ->directory('categories')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(4096) // 4MB
+                    ->formatStateUsing(function ($state) {
+                        if (!$state || str_starts_with($state, 'http') || !\Illuminate\Support\Facades\Storage::disk('public')->exists($state)) {
+                            return null;
+                        }
+                        return $state;
+                    })
                     ->default(null),
                 TextInput::make('slug')
                     ->required(),

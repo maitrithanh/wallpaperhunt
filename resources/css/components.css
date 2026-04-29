@@ -1,0 +1,110 @@
+/* ===== MASONRY GRID ===== */
+.masonry-grid {
+    columns: 4 260px;
+    column-gap: 1.5rem;
+    width: 100%;
+}
+.masonry-grid .wallpaper-card { 
+    display: inline-block;
+    width: 100%;
+    break-inside: avoid; 
+    margin-bottom: 1.5rem; 
+}
+
+/* ===== WALLPAPER CARD ===== */
+.wallpaper-card { cursor: pointer; border-radius: 12px; overflow: hidden; background: #ffffff; border: none; transition: all 0.25s ease; }
+.wallpaper-card:hover { transform: translateY(-2px); opacity: 0.95; }
+.wallpaper-card-image-link { display: block; position: relative; overflow: hidden; }
+.wallpaper-card-image { width: 100%; display: block; transition: transform 0.5s ease; }
+.wallpaper-card:hover .wallpaper-card-image { transform: scale(1.05); }
+.wallpaper-card-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; justify-content: flex-end; padding: 1rem; }
+.wallpaper-card:hover .wallpaper-card-overlay { opacity: 1; }
+.wallpaper-card-actions { display: flex; gap: 0.5rem; }
+.wallpaper-action-btn { width: 40px; height: 40px; border-radius: 9999px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: white; display: grid; place-items: center; cursor: pointer; font-size: 1.1rem; transition: all 0.2s; text-decoration: none; }
+.wallpaper-action-btn:hover { background: var(--color-wh-accent); border-color: var(--color-wh-accent); }
+.like-btn.liked { background: #ef4444; border-color: #ef4444; }
+.like-btn.liked i { font-weight: bold; }
+
+.wallpaper-card-info { padding: 0.85rem 1rem; }
+.wallpaper-card-title { display: block; font-weight: 600; font-size: 0.88rem; color: var(--color-wh-text); text-decoration: none; margin-bottom: 0.4rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wallpaper-card-title:hover { color: var(--color-wh-accent); }
+.wallpaper-card-meta { display: flex; justify-content: space-between; align-items: center; }
+.wallpaper-card-artist { display: flex; align-items: center; gap: 0.4rem; text-decoration: none; color: var(--color-wh-text-muted); font-size: 0.78rem; transition: color 0.2s; }
+.wallpaper-card-artist:hover { color: var(--color-wh-accent); }
+.wallpaper-card-avatar { width: 22px; height: 22px; border-radius: 50%; overflow: hidden; background: var(--color-wh-surface-2); display: grid; place-items: center; font-size: 0.65rem; }
+.wallpaper-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.wallpaper-card-stats { display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--color-wh-text-muted); }
+.wallpaper-card-stats span { display: flex; align-items: center; gap: 0.2rem; }
+
+/* ===== CATEGORIES GRID ===== */
+.categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.category-card { position: relative; border-radius: 12px; overflow: hidden; height: 160px; text-decoration: none; transition: all 0.25s; }
+.category-card:hover { transform: translateY(-2px); opacity: 0.95; }
+.category-card-bg { position: absolute; inset: 0; }
+.category-card-bg img, .category-card-placeholder { width: 100%; height: 100%; object-fit: cover; }
+.category-card-content { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.25rem; }
+.category-card-name { color: white; font-weight: 700; font-size: 1rem; margin-bottom: 0.15rem; }
+.category-card-count { color: rgba(255,255,255,0.6); font-size: 0.78rem; }
+
+.categories-page-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+.category-page-card { position: relative; border-radius: 12px; overflow: hidden; height: 220px; text-decoration: none; transition: all 0.25s; }
+.category-page-card:hover { transform: translateY(-2px); opacity: 0.95; }
+.category-page-card-bg { position: absolute; inset: 0; }
+.category-page-card-bg img, .category-page-card-placeholder { width: 100%; height: 100%; object-fit: cover; }
+.category-page-card-content { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85), rgba(0,0,0,0.15)); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+.category-page-card-name { color: white; font-weight: 800; font-size: 1.25rem; margin-bottom: 0.3rem; }
+.category-page-card-count { color: rgba(255,255,255,0.6); font-size: 0.82rem; display: flex; align-items: center; gap: 0.3rem; }
+
+/* ===== ALBUMS GRID ===== */
+.albums-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+.album-card { border-radius: 12px; overflow: hidden; background: #ffffff; border: none; text-decoration: none; transition: all 0.25s; }
+.album-card:hover { transform: translateY(-2px); opacity: 0.95; }
+.album-card-image { position: relative; height: 180px; overflow: hidden; }
+.album-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.album-card:hover .album-card-image img { transform: scale(1.05); }
+.album-card-placeholder { width: 100%; height: 100%; background: var(--color-wh-surface-2); display: grid; place-items: center; font-size: 2.5rem; color: var(--color-wh-text-muted); }
+.album-card-count { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); padding: 0.3rem 0.65rem; border-radius: 8px; font-size: 0.75rem; color: white; display: flex; align-items: center; gap: 0.3rem; }
+.album-card-info { padding: 1rem; }
+.album-card-name { color: white; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+.album-card-artist { color: var(--color-wh-text-muted); font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem; }
+
+/* ===== COMMON BUTTON ===== */
+.common-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.25s;
+  cursor: pointer;
+  border: none;
+}
+.common-button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* Primary (Blue Glossy) */
+.common-button-primary, .common-button-blue {
+  background: linear-gradient(180deg, #ffffff3d, #fff0), #1972f5;
+  box-shadow: inset 0 0 0 1px #fff3;
+  color: #fff !important;
+}
+
+/* Dark/Slate Variant */
+.common-button-dark, .common-button-secondary {
+  background: linear-gradient(180deg, #ffffff1a, #fff0), #1e293b;
+  box-shadow: inset 0 0 0 1px #ffffff11;
+  color: #fff !important;
+}
+
+/* Light / Outline */
+.common-button-outline {
+  background: #ffffff;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.03);
+}
+.common-button-outline:hover {
+  background: #f8fafc;
+}
